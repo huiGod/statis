@@ -1,0 +1,13 @@
+table td, th {
+	text-align: center;
+}
+
+.table-header {
+	background-color: #ffffff;
+	line-height: 0px;
+}
+
+.no-padding-left{
+	padding-left:0px;
+}
+
