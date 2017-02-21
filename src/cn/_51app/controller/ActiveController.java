@@ -27,7 +27,7 @@ public class ActiveController extends BaseController{
 	/**
 	 * tengh 2016年11月17日 下午6:30:25
 	 * @return
-	 * TODO 按渠道、应用查询激活的数据a
+	 * TODO 按渠道、应用查询激活的数据
 	 */
 	@ResponseBody
 	@RequestMapping(value="/channelData",method=RequestMethod.GET)
