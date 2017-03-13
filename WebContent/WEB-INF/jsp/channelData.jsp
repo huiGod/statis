@@ -41,13 +41,15 @@
 							<table id="table_channel" width="100%">
 							    <thead>
 							        <tr>
-							        	<th width="5%;">序号</th>
+							        	<th>序号</th>
 							        	<th>日期</th>
 							        	<th>应用名称</th>
+							        	<th>总点击</th>
 							            <th>排重点击</th>
 							            <th>激活数</th>
 							            <th>CR(%)</th>
-							            <th width="10%;">比例(10为最大)</th>
+							            <th>All CR(%)</th>
+							            <th>比例(10为最大)</th>
 							        </tr>
 							    </thead>
 							</table>
@@ -58,16 +60,28 @@
 	    </div>
     <script src="<%=path %>/static/js/data/app-channel.js?rand=1.0.0"></script>
     <script type="text/javascript">
-  	function visiableCol6(){
-  		var column = $('#table_channel').DataTable().column(6);
+  	function visiableCol(){
+  		var table = $('#table_channel').DataTable();
+  		var appchannel_level = table.column("appchannel_level:name");
+  		var appchannel_allclick = table.column("appchannel_allclick:name");
+  		var appchannel_allactivecr = table.column("appchannel_allactivecr:name");
   		if($("#channel").val()!=2){
-        	column.visible(false);
+  			appchannel_level.visible(false);
         }else{
-        	column.visible(true);
-        	<shiro:lacksPermission name="level">
-            column.visible(false);
-            </shiro:lacksPermission>
-        } 
+        	appchannel_level.visible(true);
+        	<shiro:lacksPermission name="appchannel_level">
+       			appchannel_level.visible(false);
+        	</shiro:lacksPermission>
+        }
+        
+       	<shiro:lacksPermission name="appchannel_allclick">
+       		appchannel_allclick.visible(false);
+        </shiro:lacksPermission>
+        
+       	<shiro:lacksPermission name="appchannel_allactivecr">
+       		appchannel_allactivecr.visible(false);
+        </shiro:lacksPermission>
+       	
   	}
     </script>
  </body>

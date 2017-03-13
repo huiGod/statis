@@ -48,7 +48,7 @@ public class ActiveDaoImpl implements ActiveDao {
     		groupBy+=" GROUP BY `ca`.`id` ";
     	}
     	StringBuilder sql=new StringBuilder();
-    	sql.append(" SELECT `ca`.`id`,`ca`.`name`, COUNT(*) AS `click`, SUM(`ci`.`status`) AS `active`, DATE_FORMAT(`ci`.`time`, '%Y-%m-%d') AS `time`,`ca`.`level` FROM `cpa_idfa` `ci` INNER JOIN `cpa_appid` `ca`  ON `ca`.`id` = `ci`.`appid` WHERE "+time+" "+channel+" "+appId+" "+groupBy+"");
+    	sql.append(" SELECT `ca`.`id`,`ca`.`name`, COUNT(*) AS `click`,SUM(`ci`.`count`) AS `allclick`, SUM(`ci`.`status`) AS `active`, DATE_FORMAT(`ci`.`time`, '%Y-%m-%d') AS `time`,`ca`.`level` FROM `cpa_idfa` `ci` INNER JOIN `cpa_appid` `ca`  ON `ca`.`id` = `ci`.`appid` WHERE "+time+" "+channel+" "+appId+" "+groupBy+"");
     	sql.append(" LIMIT ?,? ");
     	return this.jdbcTemplate.queryForList(sql.toString(),new Object[]{page*number,number});
     }
